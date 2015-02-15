@@ -1,4 +1,4 @@
-<?php namespace Nickdenardis\Stringmiddleware;
+<?php namespace Nickdenardis\ParserMiddleware;
 
 /**
  * Interface StringParserInterface
