@@ -22,19 +22,4 @@ interface ParserMiddlewareInterface
      * @return string
      */
     public function parse($string);
-
-    /**
-     * @return string
-     */
-    public function next();
-
-    /**
-     * @return string
-     */
-    public function current();
-
-    /**
-     * @return string
-     */
-    public function previous();
 }

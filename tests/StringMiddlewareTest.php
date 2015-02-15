@@ -67,22 +67,27 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
-     */
-    public function stackParserIsCallable() {
-
-    }
-
-    /**
-     * @test
+     * @expectedException Nickdenardis\ParserMiddleware\InvalidParserException
      */
     public function handleNonCallableStackObject() {
+        // Define the parser stack items
+        $parsers = array(
+            '/Foo/Bar',
+        );
 
+        // Set the parser stack
+        $this->parser->setStack($parsers);
+
+        // Parse the stack
+        $this->parser->parse('foo');
     }
 
     /**
      * @test
      */
     public function callStackSuccessfully() {
+        $output = $this->parser->parse('foo');
 
+        $this->assertEquals('foo', $output);
     }
 }

@@ -43,16 +43,41 @@ class ParserMiddleware implements ParserMiddlewareInterface
     /**
      * @param $string
      * @return string
+     * @throws InvalidParserException
      */
     public function parse($string) {
-        // TODO: Implement parse() method.
+        // Loop through each parser
+        while ($instance = $this->next()) {
+            // Run the parse
+            $string = $instance->run($string);
+        }
+        
+        // Return the parsed output
+        return $string;
     }
 
     /**
-     * @return string
+     * @return \Nickdenardis\StringParser\StringParserInterface
+     * @throws InvalidParserException
      */
-    public function next() {
-        // TODO: Implement next() method.
+    private function next() {
+        // Ensure there is a next parser
+        if (!array_key_exists($this->position, $this->stack)) {
+            return false;
+        }
+
+        // Ensure the class is callable
+        if (!class_exists($this->stack[$this->position])) {
+            throw new InvalidParserException('Parser "' . $this->stack[$this->position] . '" not found.');
+        }
+
+        // Return an instance of the stack item
+        $instance = new $this->stack[$this->position];
+
+        // Increment the parser position
+        $this->position++;
+
+        return $instance;
     }
 
     /**
