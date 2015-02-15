@@ -1,0 +1,12 @@
+{
+    "name": "nickdenardis/string-middleware",
+    "description": "Plugin based string manipulator for PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nick DeNardis",
+            "email": "nick.denardis@gmail.com"
+        }
+    ],
+    "require": {}
+}
