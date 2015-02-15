@@ -19,7 +19,7 @@ To install this library, run the command below and you will get the latest versi
     $parser = new ParserMiddleware\ParserMiddleware();
     
     // Define the list of parsers to run, in chronological order
-    // Each must implement the 
+    // Each must implement the \StringParser\StringParserInterface
     $parsers = array(
         'StringParser\SelfParser',
         'App\StringParsers\ReverseParser',
@@ -32,7 +32,7 @@ To install this library, run the command below and you will get the latest versi
     $output = $parser->parse($input);
     
     // Output is now modified by each parser
-    var_dump($ouput);
+    var_dump($output);
     
 ## Example Parser
 
