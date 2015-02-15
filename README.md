@@ -39,16 +39,18 @@ To install this library, run the command below and you will get the latest versi
 Reverse a string
 
     /**
-     * Class ReverseParser
+     * Class Header Parser
      */
-    class ReverseParser implements StringParser\StringParserInterface
+    class HeaderParser implements \StringParser\StringParserInterface
     {
         /**
+         * Replace every occurrence of "<p>[header ...]</p>" with "<h1>...</h1>"
+         *
          * @param string $string
          * @return string
          */
         public function parse($string) {
-            return strrev($string);
+            return preg_replace("/<p>\[header (.*)\]<\/p>/", '<h1>${1}</h1>', $string);
         }
     }
     
