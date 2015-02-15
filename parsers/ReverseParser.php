@@ -9,7 +9,7 @@ class ReverseParser implements StringParserInterface
      * @param $string
      * @return mixed
      */
-    public function run($string) {
+    public function parse($string) {
         return strrev($string);
     }
 }

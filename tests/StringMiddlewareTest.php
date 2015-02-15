@@ -36,9 +36,9 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
     public function addArrayToStack() {
         // Define the parser stack items
         $parsers = array(
-            '/Namespace/Class',
-            '/Namespace/Class',
-            '/Namespace/Class',
+            'Namespace\Class',
+            'Namespace\Class',
+            'Namespace\Class',
         );
 
         // Set the parser stack
@@ -69,10 +69,27 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
      * @test
      * @expectedException Nickdenardis\ParserMiddleware\InvalidParserException
      */
-    public function handleNonCallableStackObject() {
+    public function handleNonCallableParser() {
         // Define the parser stack items
         $parsers = array(
-            '/Foo/Bar',
+            'Foo\Bar',
+        );
+
+        // Set the parser stack
+        $this->parser->setStack($parsers);
+
+        // Parse the stack
+        $this->parser->parse('foo');
+    }
+
+    /**
+     * @test
+     * @expectedException Nickdenardis\ParserMiddleware\InvalidParserException
+     */
+    public function handleNonParserParser() {
+        // Define the parser stack items
+        $parsers = array(
+            'Exception',
         );
 
         // Set the parser stack
