@@ -114,12 +114,6 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
      * @test
      */
     public function parsersBeingCalledSuccessfully(){
-        // Create a stub for the SomeClass class.
-        $stub = $this->getMockBuilder('TestParser')->getMock();
-
-        // Configure the stub.
-        $stub->method('parse')->willReturn('foo');
-
         $parsers = array(
             'StringParser\ReverseParser',
         );
@@ -128,5 +122,20 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 
         // Ensure the stub was called
         $this->assertEquals('oof', $this->parser->parse('foo'));
+    }
+
+    /**
+     * @test
+     */
+    public function multipleParsersBeingCalledSuccessfully(){
+        $parsers = array(
+            'StringParser\ReverseParser',
+            'StringParser\ReverseParser',
+        );
+
+        $this->parser->setStack($parsers);
+
+        // Ensure the stub was called
+        $this->assertEquals('foo', $this->parser->parse('foo'));
     }
 }
