@@ -1,7 +1,7 @@
 {
     "name": "nickdenardis/string-middleware",
     "description": "Plugin based string manipulator",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "license": "MIT",
     "homepage": "http://github.com/nickdenardis/string-middleware",
     "authors": [
