@@ -12,7 +12,8 @@
     ],
     "autoload": {
       "psr-4":{
-        "Nickdenardis\\ParserMiddleware\\":"src"
+        "Nickdenardis\\ParserMiddleware\\":"src",
+        "Nickdenardis\\StringParser\\":"parsers"
       }
     },
     "require": {

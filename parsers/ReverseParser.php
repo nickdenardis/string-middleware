@@ -1,4 +1,4 @@
-<?php namespace Nickdenardis\ParserMiddleware;
+<?php namespace Nickdenardis\StringParser;
 
 /**
  * Class ReverseParser
