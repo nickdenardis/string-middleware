@@ -1,6 +1,6 @@
 # PHP String Manipulation Middleware
 
-Plugin based string manipulator for PHP
+Plugin based string manipulator
 
 [![Build Status](https://travis-ci.org/nickdenardis/string-middleware.svg)](https://travis-ci.org/nickdenardis/string-middleware)
 
