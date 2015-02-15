@@ -52,10 +52,13 @@ class ParserMiddleware implements ParserMiddlewareInterface
     public function parse($string) {
 
         // Loop through each parser
-        while ($instance = $this->next()) {
+        while ($class_name = $this->next()) {
 
             // Run the parser
-            $string = $instance->parse($string);
+            $string = (new $class_name)->parse($string);
+
+            // Increment the parser position
+            $this->position++;
         }
 
         // Return the parsed output
@@ -73,23 +76,20 @@ class ParserMiddleware implements ParserMiddlewareInterface
             return false;
         }
 
-        // Ensure the class is callable
-        if (!class_exists($this->stack[$this->position])) {
-            throw new InvalidParserException('Parser "' . $this->stack[$this->position] . '" not found.');
-        }
+        // Get the next class name
+        $class_name = $this->stack[$this->position];
 
-        // Create an instance of the parser
-        $instance = new $this->stack[$this->position];
+        // Ensure the class is callable
+        if (!class_exists($class_name)) {
+            throw new InvalidParserException('Parser "' . $class_name . '" not found.');
+        }
 
         // Ensure the parser implemented the ParserInterface
-        if (!in_array('StringParser\\StringParserInterface', class_implements($instance))) {
-            throw new InvalidParserException('Parser "' . $this->stack[$this->position] . '" not found.');
+        if (!in_array('StringParser\\StringParserInterface', class_implements($class_name))) {
+            throw new InvalidParserException('Parser "' . $class_name . '" not found.');
         }
 
-        // Increment the parser position
-        $this->position++;
-
-        // Return an instance of the object
-        return $instance;
+        // Return the next class name
+        return $class_name;
     }
 }
