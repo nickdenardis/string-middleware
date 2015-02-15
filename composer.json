@@ -1,14 +1,23 @@
 {
     "name": "nickdenardis/string-middleware",
     "description": "Plugin based string manipulator for PHP",
+    "version": "0.0.0",
     "license": "MIT",
+    "homepage": "http://github.com/nickdenardis/string-middleware",
     "authors": [
         {
             "name": "Nick DeNardis",
             "email": "nick.denardis@gmail.com"
         }
     ],
-    "require": {},
+    "autoload": {
+      "psr-4":{
+        "Nickdenardis\\StringMiddleware\\":"src"
+      }
+    },
+    "require": {
+      "php": ">=5.3.0"
+    },
     "require-dev": {
         "phpunit/phpunit": "~4.5"
     }
