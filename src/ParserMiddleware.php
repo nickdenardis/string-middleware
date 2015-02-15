@@ -53,9 +53,10 @@ class ParserMiddleware implements ParserMiddlewareInterface
 
         // Loop through each parser
         while ($class_name = $this->next()) {
+            $instance = new $class_name;
 
             // Run the parser
-            $string = (new $class_name)->parse($string);
+            $string = $instance->parse($string);
 
             // Increment the parser position
             $this->position++;
