@@ -12,8 +12,27 @@ To install this library, run the command below and you will get the latest versi
     
 ## Usage
 
-*In development*
+    // Start with some string
+    $input = 'Some string to parse';
 
+    // Create the instance of the Parser
+    $parser = new \Nickdenaris\ParserMiddleware();
+    
+    // Define the list of parsers to run, in chronological order
+    $parsers = array(
+        '/Nickdenardis/SelfParser', // Adhears to the ParserInterface
+        '/Nickdenardis/ReverseParser',
+    );
+    
+    // Set the stack of parsers
+    $parser->setStack($parsers);
+    
+    // Parse the string and return the output
+    $output = $parser->parse($input);
+    
+    // Output is now modified by each parser
+    var_dump($ouput);
+    
 ## Tests
 
     phpunit
