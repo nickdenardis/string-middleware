@@ -1,4 +1,4 @@
-<?php namespace Nickdenardis\StringParser;
+<?php namespace StringParser;
 
 /**
  * Class ReverseParser
@@ -6,8 +6,8 @@
 class ReverseParser implements StringParserInterface
 {
     /**
-     * @param $string
-     * @return mixed
+     * @param string $string
+     * @return string
      */
     public function parse($string) {
         return strrev($string);

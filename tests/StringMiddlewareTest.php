@@ -1,6 +1,6 @@
 <?php
 
-use Nickdenardis\ParserMiddleware\ParserMiddleware;
+use ParserMiddleware\ParserMiddleware;
 
 /**
  * Class StringMiddlewareTest
@@ -8,7 +8,7 @@ use Nickdenardis\ParserMiddleware\ParserMiddleware;
 class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var Nickdenardis\ParserMiddleware\ParserMiddleware
+     * @var ParserMiddleware\ParserMiddleware
      */
     protected $parser;
 
@@ -53,7 +53,7 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException Nickdenardis\ParserMiddleware\InvalidStackException
+     * @expectedException ParserMiddleware\InvalidStackException
      */
     public function addNonArrayToStack() {
         $parsers = array(
@@ -67,7 +67,7 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException Nickdenardis\ParserMiddleware\InvalidParserException
+     * @expectedException ParserMiddleware\InvalidParserException
      */
     public function handleNonCallableParser() {
         // Define the parser stack items
@@ -84,10 +84,10 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException Nickdenardis\ParserMiddleware\InvalidParserException
+     * @expectedException ParserMiddleware\InvalidParserException
      */
     public function handleNonParserParser() {
-        // Define the parser stack items
+        // Define a stack with items that do not implement 'StringParser\StringParserInterface'
         $parsers = array(
             'Exception',
         );
@@ -102,9 +102,31 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function callStackSuccessfully() {
+    public function returnsSameStringWithoutParsers() {
+        // Run the parser without setting a stack of parsers
         $output = $this->parser->parse('foo');
 
+        // The output should equal the input
         $this->assertEquals('foo', $output);
+    }
+
+    /**
+     * @test
+     */
+    public function parsersBeingCalledSuccessfully(){
+        // Create a stub for the SomeClass class.
+        $stub = $this->getMockBuilder('TestParser')->getMock();
+
+        // Configure the stub.
+        $stub->method('parse')->willReturn('foo');
+
+        $parsers = array(
+            'StringParser\ReverseParser',
+        );
+
+        $this->parser->setStack($parsers);
+
+        // Ensure the stub was called
+        $this->assertEquals('oof', $this->parser->parse('foo'));
     }
 }

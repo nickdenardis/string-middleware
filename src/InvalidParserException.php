@@ -1,3 +1,3 @@
-<?php namespace Nickdenardis\ParserMiddleware;
+<?php namespace ParserMiddleware;
 
 class InvalidParserException extends \Exception {}

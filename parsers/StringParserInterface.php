@@ -1,14 +1,14 @@
-<?php namespace Nickdenardis\StringParser;
+<?php namespace StringParser;
 
 /**
  * Interface StringParserInterface
- * @package Nickdenardis\StringParser
+ * @package StringParser
  */
 interface StringParserInterface
 {
     /**
-     * @param $string
-     * @return mixed
+     * @param string $string
+     * @return string
      */
     public function parse($string);
 }

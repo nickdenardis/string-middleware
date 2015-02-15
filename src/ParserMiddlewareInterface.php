@@ -1,8 +1,8 @@
-<?php namespace Nickdenardis\ParserMiddleware;
+<?php namespace ParserMiddleware;
 
 /**
  * Interface ParserMiddlewareInterface
- * @package Nickdenardis\ParserMiddleware
+ * @package ParserMiddleware
  */
 interface ParserMiddlewareInterface
 {

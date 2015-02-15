@@ -16,12 +16,13 @@ To install this library, run the command below and you will get the latest versi
     $input = 'Some string to parse';
 
     // Create the instance of the Parser
-    $parser = new \Nickdenaris\ParserMiddleware();
+    $parser = new ParserMiddleware\ParserMiddleware();
     
     // Define the list of parsers to run, in chronological order
+    // Each must implement the 
     $parsers = array(
-        '/Nickdenardis/SelfParser', // Adhears to the ParserInterface
-        '/Nickdenardis/ReverseParser',
+        'StringParser\SelfParser',
+        'App\StringParsers\ReverseParser',
     );
     
     // Set the stack of parsers
@@ -32,6 +33,24 @@ To install this library, run the command below and you will get the latest versi
     
     // Output is now modified by each parser
     var_dump($ouput);
+    
+## Example Parser
+
+Reverse a string
+
+    /**
+     * Class ReverseParser
+     */
+    class ReverseParser implements StringParser\StringParserInterface
+    {
+        /**
+         * @param string $string
+         * @return string
+         */
+        public function parse($string) {
+            return strrev($string);
+        }
+    }
     
 ## Tests
 

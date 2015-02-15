@@ -1,4 +1,4 @@
-<?php namespace Nickdenardis\ParserMiddleware;
+<?php namespace ParserMiddleware;
 
 /**
  * Class ParserMiddleware
@@ -17,20 +17,23 @@ class ParserMiddleware implements ParserMiddlewareInterface
 
     /**
      * @param array $stack
-     * @return array
+     * @return null
      * @throws InvalidStackException
      */
     public function setStack(array $stack) {
 
-        // Ensure the stack is an array of strings
-        foreach ($stack as $item) {
-            if (!is_string($item)) {
-                throw new InvalidStackException('Stack must contain an array of strings.');
+        // Run through the stack
+        foreach ($stack as $class_name) {
+
+            // Ensure each item is just the class name string
+            if (!is_string($class_name)) {
+                throw new InvalidStackException('Stack must contain an array of class name strings. (Example: StringParser\ReverseParser)');
             }
+
+            // Add the parser to the end of the stack
+            array_push($this->stack, $class_name);
         }
 
-        // Set the stack
-        return $this->stack = $stack;
     }
 
     /**
@@ -51,7 +54,7 @@ class ParserMiddleware implements ParserMiddlewareInterface
         // Loop through each parser
         while ($instance = $this->next()) {
 
-            // Run the parse
+            // Run the parser
             $string = $instance->parse($string);
         }
 
@@ -60,7 +63,7 @@ class ParserMiddleware implements ParserMiddlewareInterface
     }
 
     /**
-     * @return \Nickdenardis\StringParser\StringParserInterface
+     * @return StringParser\StringParserInterface
      * @throws InvalidParserException
      */
     private function next() {
@@ -79,7 +82,7 @@ class ParserMiddleware implements ParserMiddlewareInterface
         $instance = new $this->stack[$this->position];
 
         // Ensure the parser implemented the ParserInterface
-        if (!in_array('Nickdenardis\\StringParser\\StringParserInterface', class_implements($instance))) {
+        if (!in_array('StringParser\\StringParserInterface', class_implements($instance))) {
             throw new InvalidParserException('Parser "' . $this->stack[$this->position] . '" not found.');
         }
 
