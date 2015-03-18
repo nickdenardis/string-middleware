@@ -2,13 +2,13 @@
 
 Plugin based string manipulator
 
-[![Build Status](https://travis-ci.org/nickdenardis/string-middleware.svg)](https://travis-ci.org/nickdenardis/string-middleware)
+[![Build Status](https://travis-ci.org/waynestate/string-middleware.svg)](https://travis-ci.org/waynestate/string-middleware)
 
 ## Installation
 
 To install this library, run the command below and you will get the latest version
 
-    composer require nickdenardis/string-middleware
+    composer require waynestate/string-middleware
     
 ## Usage
 
