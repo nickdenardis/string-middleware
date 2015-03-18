@@ -1,9 +1,9 @@
 {
-    "name": "nickdenardis/string-middleware",
+    "name": "waynestate/string-middleware",
     "description": "Plugin based string manipulator",
-    "version": "0.1.1",
+    "version": "1.0.0",
     "license": "MIT",
-    "homepage": "http://github.com/nickdenardis/string-middleware",
+    "homepage": "http://github.com/waynestate/string-middleware",
     "authors": [
         {
             "name": "Nick DeNardis",
