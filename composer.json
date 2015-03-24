@@ -12,8 +12,8 @@
     ],
     "autoload": {
       "psr-4":{
-        "ParserMiddleware\\":"src",
-        "StringParser\\":"parsers"
+        "Waynestate\\ParserMiddleware\\":"src",
+        "Waynestate\\StringParser\\":"parsers"
       }
     },
     "require": {

@@ -1,6 +1,6 @@
 <?php
 
-use ParserMiddleware\ParserMiddleware;
+use Waynestate\ParserMiddleware\ParserMiddleware;
 
 /**
  * Class StringMiddlewareTest
@@ -8,7 +8,7 @@ use ParserMiddleware\ParserMiddleware;
 class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var ParserMiddleware\ParserMiddleware
+     * @var Waynestate\ParserMiddleware\ParserMiddleware
      */
     protected $parser;
 
@@ -53,7 +53,7 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException ParserMiddleware\InvalidStackException
+     * @expectedException Waynestate\ParserMiddleware\InvalidStackException
      */
     public function addNonArrayToStack() {
         $parsers = array(
@@ -67,7 +67,7 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException ParserMiddleware\InvalidParserException
+     * @expectedException Waynestate\ParserMiddleware\InvalidParserException
      */
     public function handleNonCallableParser() {
         // Define the parser stack items
@@ -84,7 +84,7 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException ParserMiddleware\InvalidParserException
+     * @expectedException Waynestate\ParserMiddleware\InvalidParserException
      */
     public function handleNonParserParser() {
         // Define a stack with items that do not implement 'StringParser\StringParserInterface'
@@ -115,7 +115,7 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
      */
     public function parsersBeingCalledSuccessfully(){
         $parsers = array(
-            'StringParser\ReverseParser',
+            'Waynestate\StringParser\ReverseParser',
         );
 
         $this->parser->setStack($parsers);
@@ -129,8 +129,8 @@ class StringMiddlewareTest extends PHPUnit_Framework_TestCase
      */
     public function multipleParsersBeingCalledSuccessfully(){
         $parsers = array(
-            'StringParser\ReverseParser',
-            'StringParser\ReverseParser',
+            'Waynestate\StringParser\ReverseParser',
+            'Waynestate\StringParser\ReverseParser',
         );
 
         $this->parser->setStack($parsers);

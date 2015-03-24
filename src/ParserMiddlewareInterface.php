@@ -1,4 +1,4 @@
-<?php namespace ParserMiddleware;
+<?php namespace Waynestate\ParserMiddleware;
 
 /**
  * Interface ParserMiddlewareInterface

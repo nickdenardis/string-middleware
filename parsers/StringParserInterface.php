@@ -1,4 +1,4 @@
-<?php namespace StringParser;
+<?php namespace Waynestate\StringParser;
 
 /**
  * Interface StringParserInterface
