@@ -16,13 +16,13 @@ To install this library, run the command below and you will get the latest versi
     $input = 'Some string to parse';
 
     // Create the instance of the Parser
-    $parser = new ParserMiddleware\ParserMiddleware();
+    $parser = new \Waynestate\ParserMiddleware\ParserMiddleware();
     
     // Define the list of parsers to run, in chronological order
-    // Each must implement the \StringParser\StringParserInterface
+    // Each must implement the Waynestate\StringParser\StringParserInterface
     $parsers = array(
-        'StringParser\SelfParser',
-        'App\StringParsers\ReverseParser',
+        'Waynestate\StringParser\SelfParser',
+        'Waynestate\StringParsers\ReverseParser',
     );
     
     // Set the stack of parsers
@@ -41,7 +41,7 @@ Reverse a string
     /**
      * Class Header Parser
      */
-    class HeaderParser implements \StringParser\StringParserInterface
+    class HeaderParser implements Waynestate\StringParser\StringParserInterface
     {
         /**
          * Replace every occurrence of "<p>[header ...]</p>" with "<h1>...</h1>"
