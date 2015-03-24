@@ -1,4 +1,4 @@
-<?php namespace ParserMiddleware;
+<?php namespace Waynestate\ParserMiddleware;
 
 /**
  * Class ParserMiddleware
@@ -27,7 +27,7 @@ class ParserMiddleware implements ParserMiddlewareInterface
 
             // Ensure each item is just the class name string
             if (!is_string($class_name)) {
-                throw new InvalidStackException('Stack must contain an array of class name strings. (Example: StringParser\ReverseParser)');
+                throw new InvalidStackException('Stack must contain an array of class name strings. (Example: Waynestate\StringParser\ReverseParser)');
             }
 
             // Add the parser to the end of the stack
@@ -67,7 +67,7 @@ class ParserMiddleware implements ParserMiddlewareInterface
     }
 
     /**
-     * @return StringParser\StringParserInterface
+     * @return \Waynestate\StringParser\StringParserInterface
      * @throws InvalidParserException
      */
     private function next() {
@@ -86,7 +86,7 @@ class ParserMiddleware implements ParserMiddlewareInterface
         }
 
         // Ensure the parser implemented the ParserInterface
-        if (!in_array('StringParser\\StringParserInterface', class_implements($class_name))) {
+        if (!in_array('Waynestate\\StringParser\\StringParserInterface', class_implements($class_name))) {
             throw new InvalidParserException('Parser "' . $class_name . '" not found.');
         }
 

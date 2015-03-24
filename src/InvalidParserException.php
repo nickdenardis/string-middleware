@@ -1,3 +1,3 @@
-<?php namespace ParserMiddleware;
+<?php namespace Waynestate\ParserMiddleware;
 
 class InvalidParserException extends \Exception {}
