@@ -62,6 +62,9 @@ class ParserMiddleware implements ParserMiddlewareInterface
             $this->position++;
         }
 
+        // Reset the position
+        $this->setPosition(0);
+
         // Return the parsed output
         return $string;
     }
@@ -92,5 +95,14 @@ class ParserMiddleware implements ParserMiddlewareInterface
 
         // Return the next class name
         return $class_name;
+    }
+
+    /**
+     * Set the position of the stack
+     *
+     * @param $position
+     */
+    public function setPosition($position) {
+        $this->position = $position;
     }
 }
